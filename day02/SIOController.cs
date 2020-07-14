@@ -74,9 +74,9 @@ namespace Forum.netapi.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest, "Username/password is incorrect!");
         }
-
+         [HttpDelete]
         // DELETE: api/SIO/5
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage ObrisiKorisnika(int id)
         {
             if (id > AllUsers.Count || id < 0) 
                 return Request.CreateResponse(HttpStatusCode.NotFound, "ID is out of boundaries");
