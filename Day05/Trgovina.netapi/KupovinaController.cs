@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -96,9 +96,9 @@ namespace Trgovina.netapi.Controllers
 
         [HttpPut]
         [Route("api/PromijeniCijenu/{proizvodid}")]
-        public HttpResponseMessage PromijeniCijenu(int proizvodID, [FromBody] int novaCijena)
+        public async Task<HttpResponseMessage> PromijeniCijenu(int proizvodID, [FromBody] int novaCijena)
         {
-            bool uvijet = trgovinaService.PromijeniCijenu(proizvodID,novaCijena);
+            bool uvijet = await trgovinaService.PromijeniCijenu(proizvodID,novaCijena);
             return Response(uvijet, "Cijena je promijenjena.", "Nema takvog proizvoda.");
 
         }
@@ -106,9 +106,9 @@ namespace Trgovina.netapi.Controllers
         //U tablicama na stranim ključevima je primjenjen "ON DELETE CASCADE"
         [HttpDelete]
         [Route("api/UkloniKupca/{kupacid}")]
-        public HttpResponseMessage UkloniKupca(int kupacID)
+        public async Task<HttpResponseMessage> UkloniKupca(int kupacID)
         {
-            bool uvijet = trgovinaService.UkloniKupca(kupacID);
+            bool uvijet = await trgovinaService.UkloniKupca(kupacID);
             return Response(uvijet, "Kupac je uklonjen.", "Nema takvog kupca.");
         }
 
