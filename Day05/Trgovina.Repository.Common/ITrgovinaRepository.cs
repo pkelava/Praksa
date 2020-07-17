@@ -14,8 +14,8 @@ namespace Trgovina.Repository.Common
         Task<List<DomainKupac>> SviKupci();
         Task<List<string>> SveKupovineKupca(string kupac);
         Task<List<string>> KupacPoPotrosnji(int potrosnja);
-        void NovaKupovina(DomainKupac kupac, int proizvodid);
-        void PromijeniCijenu(int proizvodid, int novacijena);
-        void UkloniKupca(int kupacid);
+        Task NovaKupovina(DomainKupac kupac, int proizvodid);
+        Task PromijeniCijenu(int proizvodid, int novacijena);
+        Task UkloniKupca(int kupacid);
     }
 }
