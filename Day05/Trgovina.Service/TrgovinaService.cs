@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,12 +68,12 @@ namespace Trgovina.Service
                     kupac.KupacID = 1;
                 }
                 DomainKupac.IDKupaca.Add(kupac.KupacID);
-                trgovinaRepository.NovaKupovina(kupac, proizvodID);
+                await trgovinaRepository.NovaKupovina(kupac, proizvodID);
                 return true;
             }
         }
         
-        public bool PromijeniCijenu(int proizvodID, int novaCijena)
+        public async Task<bool> PromijeniCijenu(int proizvodID, int novaCijena)
         {
             bool flag = DomainProizvod.IDProizvoda.Exists(p => p == proizvodID);
 
@@ -83,13 +83,13 @@ namespace Trgovina.Service
             }
             else
             {
-                trgovinaRepository.PromijeniCijenu(proizvodID, novaCijena);
+                await trgovinaRepository.PromijeniCijenu(proizvodID, novaCijena);
                 return true;
             }
         }
 
 
-        public bool UkloniKupca(int kupacID)
+        public async Task<bool> UkloniKupca(int kupacID)
         {
             bool flag = DomainKupac.IDKupaca.Exists(p => p == kupacID);
 
@@ -101,7 +101,7 @@ namespace Trgovina.Service
             {
                 int toremove = DomainKupac.IDKupaca.Find(p => p == kupacID);
                 DomainKupac.IDKupaca.Remove(toremove);
-                trgovinaRepository.UkloniKupca(kupacID);
+                await trgovinaRepository.UkloniKupca(kupacID);
                 return true;
             }
         }
