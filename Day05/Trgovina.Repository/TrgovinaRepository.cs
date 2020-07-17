@@ -155,7 +155,7 @@ namespace Trgovina.Repository
         }
 
 
-        public async void NovaKupovina(DomainKupac kupac, int proizvodID)
+        public async Task NovaKupovina(DomainKupac kupac, int proizvodID)
         {
             SqlConnection newConnection = myConnection;
             newConnection.Open();
@@ -179,7 +179,7 @@ namespace Trgovina.Repository
         }
 
 
-        public async void PromijeniCijenu(int proizvodID, int novaCijena)
+        public async Task PromijeniCijenu(int proizvodID, int novaCijena)
         {
             SqlConnection newConnection = myConnection;
 
@@ -196,7 +196,7 @@ namespace Trgovina.Repository
             }
         }
 
-        public async void UkloniKupca(int kupacid)
+        public async Task UkloniKupca(int kupacid)
         {
             SqlConnection newConnection = myConnection;
 
