@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,7 @@ namespace Trgovina.Service.Common
         Task<List<string>> SveKupovineKupca(string kupac);
         Task<List<string>> KupacPoPotrosnji(int potrosnja);
         Task<bool> NovaKupovina(DomainKupac kupac, int proizvodid);
-        bool PromijeniCijenu(int proizvodid, int novacijena);
-        bool UkloniKupca(int kupacid);
+        Task<bool> PromijeniCijenu(int proizvodid, int novacijena);
+        Task<bool> UkloniKupca(int kupacid);
     }
 }
