@@ -46,8 +46,17 @@
     <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.5.2.0\lib\net461\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Extras.CommonServiceLocator, Version=6.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.CommonServiceLocator.6.0.0\lib\netstandard2.0\Autofac.Extras.CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=5.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.5.0.0\lib\net461\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net47\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -135,6 +144,14 @@
     <ProjectReference Include="..\Trgovina.Model\Trgovina.Model.csproj">
       <Project>{4ed1b9b8-412e-45b5-83cd-92f330e4b03f}</Project>
       <Name>Trgovina.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trgovina.Repository.Common\Trgovina.Repository.Common.csproj">
+      <Project>{090385de-568c-4421-b752-e25b999203d2}</Project>
+      <Name>Trgovina.Repository.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trgovina.Repository\Trgovina.Repository.csproj">
+      <Project>{63f9579a-6cf6-4770-835c-b8f85a4fc49a}</Project>
+      <Name>Trgovina.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Trgovina.Service.Common\Trgovina.Service.Common.csproj">
       <Project>{44a249a1-8f42-4fcf-a841-70fce1761442}</Project>

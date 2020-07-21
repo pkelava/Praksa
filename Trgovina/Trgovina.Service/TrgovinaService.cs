@@ -14,27 +14,29 @@ namespace Trgovina.Service
 {
     public class TrgovinaService : ITrgovinaServices
     {
-        IContainer Container { get; set; }
+        private ITrgovinaRepository TrgovinaRepository { get; set; }
+
+        public TrgovinaService(ITrgovinaRepository TrgovinaRepository)
+        {
+            this.TrgovinaRepository = TrgovinaRepository;
+        }
 
         #region Methods
 
         public async Task<List<string>> DohvatiSve()
         {
-            var trgovinaRepository = DependencyInjection();
-            return await trgovinaRepository.DohvatiSve();
+            return await TrgovinaRepository.DohvatiSve();
         }
 
 
         public async Task<List<DomainKupac>> SviKupci()
         {
-            var trgovinaRepository = DependencyInjection();
-            return await trgovinaRepository.SviKupci(); ;
+            return await TrgovinaRepository.SviKupci(); ;
         }
 
         public async Task<List<string>> SveKupovineKupca(string kupac)
         {
-            var trgovinaRepository = DependencyInjection();
-            return await trgovinaRepository.SveKupovineKupca(kupac); ;
+            return await TrgovinaRepository.SveKupovineKupca(kupac); 
         }
 
 
@@ -46,8 +48,7 @@ namespace Trgovina.Service
             }
             else
             {
-                var trgovinaRepository = DependencyInjection();
-                return await trgovinaRepository.KupacPoPotrosnji(potrosnja);
+                return await TrgovinaRepository.KupacPoPotrosnji(potrosnja);
             }
         }
 
@@ -74,8 +75,7 @@ namespace Trgovina.Service
                 }
                 DomainKupac.IDKupaca.Add(kupac.KupacID);
 
-                var trgovinaRepository = DependencyInjection();
-                await trgovinaRepository.NovaKupovina(kupac, proizvodID);
+                await TrgovinaRepository.NovaKupovina(kupac, proizvodID);
                 return true;
             }
         }
@@ -90,8 +90,7 @@ namespace Trgovina.Service
             }
             else
             {
-                var trgovinaRepository = DependencyInjection();
-                await trgovinaRepository.PromijeniCijenu(proizvodID, novaCijena);
+                await TrgovinaRepository.PromijeniCijenu(proizvodID, novaCijena);
                 return true;
             }
         }
@@ -109,24 +108,13 @@ namespace Trgovina.Service
             {
                 int toremove = DomainKupac.IDKupaca.Find(p => p == kupacID);
                 DomainKupac.IDKupaca.Remove(toremove);
-                var trgovinaRepository = DependencyInjection();
-                await trgovinaRepository.UkloniKupca(kupacID);
+                await TrgovinaRepository.UkloniKupca(kupacID);
                 return true;
             }
         }
         #endregion Methods
 
         #region DRY
-        private ITrgovinaRepository DependencyInjection()
-        {
-            if (Container == null)
-            {
-                ContainerBuilder builder = new ContainerBuilder();
-                builder.RegisterType<TrgovinaRepository>().As<ITrgovinaRepository>();
-                Container = builder.Build();
-            }
-            return Container.BeginLifetimeScope().Resolve<ITrgovinaRepository>();
-        }
         #endregion DRY
 
     }
