@@ -21,8 +21,6 @@ function App() {
               <Link to="/UkloniKupca" class="gore">UkloniKupca</Link>
 
           </nav>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
 
         <Switch>
           
